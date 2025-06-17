@@ -29,7 +29,7 @@
     
 }
 
-.section1{
+#section1{
     text-align: center;
 }
 
@@ -44,6 +44,7 @@
 .intro-content{
     display: flex;
     justify-content: center;
+    gap: 50px;
 }
 
 .intro-text{
@@ -59,13 +60,14 @@
     border-radius: 50%;
 }
 
-.section2{
+#section2{
     text-align: center;
 }
 
 .profile-content{
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .profile-item{
