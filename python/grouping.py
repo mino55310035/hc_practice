@@ -5,10 +5,6 @@ random.shuffle(l)
 
 division_type = random.choice([3, 2])
 
-if division_type == 3:
-    print(sorted(l[0: 3]))
-    print(sorted(l[3: ]))
-elif division_type == 2:
-    print(sorted(l[0: 2]))
-    print(sorted(l[2:]))
+print(l[0:division_type])
+print(l[division_type:])
 
