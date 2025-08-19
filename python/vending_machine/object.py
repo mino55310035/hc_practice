@@ -50,17 +50,27 @@ class Juice:
 class Vending_machine:
     def __init__(self):
         self.juice_list = [
-            Juice("ペプシ", 150, 5),
-            Juice("いろはす", 120, 5),
-            Juice("モンスター", 350, 5)   
+            Juice("ペプシ", 150),
+            Juice("いろはす", 120),
+            Juice("モンスター", 350)
         ]
+
+        self._stock = []
+        for _ in range(5):
+            self._stock.append(Juice("ペプシ", 150))
+        for _ in range(5):
+            self._stock.append(Juice("いろはす", 120))
+        for _ in range(5):
+            self._stock.append(Juice("モンスター", 350))
+        
+        
         self._sales = 0
 
     def purchase(self, suica, item_index):
-        if not self.can_buy(self,suica):
+        if not self.can_buy(suica, item_index):
             raise Exception("購入できません")
         juice = self.juice_list[item_index]
-        juice.stock -= 1
+        self._stock.remove(juice)
         self._sales += juice.price
         suica.pay(juice.price)
 
@@ -70,8 +80,9 @@ class Vending_machine:
 
     def can_buy(self, suica, item_index):
         juice = self.juice_list[item_index]
-        if suica.balance >= juice.price > 0:
-            return True
+        for j in self._stock:
+            if j.name == juice.name and suica._balance > juice.price:
+                return True
         else:
             return False
 
@@ -79,10 +90,15 @@ class Vending_machine:
         item_list = []
         for i in range(len(self.juice_list)):
             if self.can_buy(suica, i):
-                list.append(self.juice_list[i])
+                item_list.append(self.juice_list[i].name)
         return item_list
 
-    def restock(self, item_index, replenishment):
+    def restock(self, item_index, amount):
         juice = self.juice_list[item_index]
-        juice.stock += replenishment
-        return juice.stock
+        for _ in range(amount):
+            self._stock.append(Juice(juice.name, juice.price))
+
+
+        
+
+        
