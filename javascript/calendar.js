@@ -2,7 +2,6 @@ console.log(process.argv);
 
 const today = new Date;
 
-let year, month;
 if (process.argv.length === 2){
     year = today.getFullYear();
     month = today.getMonth() + 1;
@@ -27,22 +26,17 @@ const dateInMonth = new Date(year, month, 0).getDate();
 const firstDay = new Date(year, month -1, 1);
 const startDay = firstDay.getDay();
 
-const calendar = [];
- 
-for (let i=0; i < 42; i++) {
-    if (i < startDay){
-        calendar[i] = " ".padStart(2, " ");
+ let calendarText = " ";
+ for (let i = 0; i < 42; i++) {
+    if(i < startDay){
+        calendarText += " ".padStart(2, " ");
     }else if(i < startDay + dateInMonth){
         const currentDay = i - startDay + 1;
-        calendar[i] = String(currentDay).padStart(2, " ");
-    } else {
-        calendar[i] = " ".padStart(2, " ");
+        calendarText += String(currentDay).padStart(2, " ");
+    }else{
+        calendarText += " ".padStart(2, " ");
     }
- }
 
- let calendarText = " ";
- for (let i = 0; i < calendar.length; i++) {
-    calendarText += calendar[i];
     if((i + 1) % 7 === 0){
         calendarText += "\n";
     } else{
