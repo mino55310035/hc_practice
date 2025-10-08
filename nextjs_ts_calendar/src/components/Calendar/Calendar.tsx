@@ -10,7 +10,7 @@ import { EventModal } from "./EventModal"
 import { EditEventModal } from "../EditEventModal"
 import { WeekView } from "./WeekVIew"
 
-interface CalendarProps{}
+type CalendarProps = object;
 
 export const Calendar = ({}: CalendarProps) => {
     const [currentDate, setCurrentDate] = useState<Date>(getTodayDate());
