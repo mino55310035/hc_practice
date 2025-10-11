@@ -10,7 +10,6 @@ export const MonthView = ({
     currentDate,
     days,
     handleOpenClick,
-    handleDateClick,
     getEventsForDate,
     handleOpenEditClick,
     handleEventClick,
@@ -20,7 +19,6 @@ export const MonthView = ({
     currentDate: Date
     days: Date[]
     handleOpenClick: ()=>void
-    handleDateClick: (date: Date) => void
     getEventsForDate: (date: Date) => Event[]
     handleOpenEditClick: () => void
     handleEventClick: (event: Event) => void
@@ -51,7 +49,6 @@ export const MonthView = ({
                     isSameMonth(date, currentDate)? 'text-black' : 'text-gray-400'
                 }` 
                 } onClick={() => {
-                    handleDateClick(date);
                     handleOpenClick();
                 }}>
                     <div className={`inline-flex items-center justify-center ${checkIsToday(date)? 'text-white bg-blue-500 rounded-full w-7 h-7 mx-auto' : 'text-center'}`}>
